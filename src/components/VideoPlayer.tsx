@@ -20,15 +20,15 @@ interface VideoPlayerProps {
 
 const SERVERS = [
     {
-        name: "Vidy",
-        movie: (id: string) => `https://www.vidy.st/movie/${id}?color=DC2626`,
-        show: (id: string, s: number, e: number) => `https://www.vidy.st/tv/${id}/${s}/${e}?color=DC2626&nextEpisode=true&episodeSelector=true`,
-        useSandbox: false
-    },
-    {
         name: "Filmu",
         movie: (id: string) => `https://embed.filmu.in/movie/${id}`,
         show: (id: string, s: number, e: number) => `https://embed.filmu.in/tv/${id}/${s}/${e}`,
+        useSandbox: false
+    },
+    {
+        name: "Vidy",
+        movie: (id: string) => `https://www.vidy.st/movie/${id}?color=DC2626`,
+        show: (id: string, s: number, e: number) => `https://www.vidy.st/tv/${id}/${s}/${e}?color=DC2626&nextEpisode=true&episodeSelector=true`,
         useSandbox: false
     },
     {
