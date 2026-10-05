@@ -39,6 +39,12 @@ const SERVERS = [
     },
     {
         name: "Vidrift",
+        movie: (id: string) => `https://vidnest.fun/movie/${id}`,
+        show: (id: string, s: number, e: number) => `https://vidnest.fun/tv/${id}/${s}/${e}`,
+        useSandbox: false
+    },
+    {
+        name: "VidNest",
         movie: (id: string) => `https://embed.vidrift.in/embed/movie/${id}?brand=Meowly`,
         show: (id: string, s: number, e: number) => `https://embed.vidrift.in/embed/tv/${id}/${s}/${e}?brand=Meowly`,
         useSandbox: false
