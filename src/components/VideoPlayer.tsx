@@ -20,15 +20,15 @@ interface VideoPlayerProps {
 
 const SERVERS = [
     {
-        name: "Filmu",
-        movie: (id: string) => `https://embed.filmu.in/movie/${id}`,
-        show: (id: string, s: number, e: number) => `https://embed.filmu.in/tv/${id}/${s}/${e}`,
-        useSandbox: false
-    },
-    {
         name: "Vidy",
         movie: (id: string) => `https://www.vidy.st/movie/${id}?color=DC2626`,
         show: (id: string, s: number, e: number) => `https://www.vidy.st/tv/${id}/${s}/${e}?color=DC2626&nextEpisode=true&episodeSelector=true`,
+        useSandbox: false
+    },
+    {
+        name: "Filmu",
+        movie: (id: string) => `https://embed.filmu.in/movie/${id}`,
+        show: (id: string, s: number, e: number) => `https://embed.filmu.in/tv/${id}/${s}/${e}`,
         useSandbox: false
     },
     {
@@ -57,27 +57,9 @@ const SERVERS = [
         useSandbox: false
     },
     {
-        name: "Peachify",
-        movie: (id: string) => `https://peachify.top/embed/movie/${id}`,
-        show: (id: string, s: number, e: number) => `https://peachify.top/embed/tv/${id}/${s}/${e}`,
-        useSandbox: false
-    },
-    {
         name: "VidSrc SU",
         movie: (id: string) => `https://vidsrcme.su/embed/movie?tmdb=${id}`,
         show: (id: string, s: number, e: number) => `https://vidsrcme.su/embed/tv?tmdb=${id}&season=${s}&episode=${e}`,
-        useSandbox: false
-    },
-    {
-        name: "Videasy",
-        movie: (id: string) => `https://player.videasy.net/movie/${id}`,
-        show: (id: string, s: number, e: number) => `https://player.videasy.net/tv/${id}/${s}/${e}`,
-        useSandbox: false
-    },
-    {
-        name: "Vidking",
-        movie: (id: string) => `https://www.vidking.net/embed/movie/${id}`,
-        show: (id: string, s: number, e: number) => `https://www.vidking.net/embed/tv/${id}/${s}/${e}`,
         useSandbox: false
     },
     {
@@ -89,19 +71,7 @@ const SERVERS = [
     {
         name: "AutoEmbed",
         movie: (id: string) => `https://autoembed.co/movie/tmdb/${id}`,
-        show: (id: string, s: number, e: number) => `https://autoembed.co/tv/tmdb/${id}/${s}/${e}`,
-        useSandbox: false
-    },
-    {
-        name: "Cinezo",
-        movie: (id: string) => `https://player.cinezo.live/embed/movie/${id}?autoplay=false&poster=true&chromecast=true&servericon=true&setting=true&pip=true&font=Roboto&fontcolor=6f63ff&fontsize=20&opacity=0.5&primarycolor=e8b86d&secondarycolor=0a0a12&iconcolor=ffffff`,
-        show: (id: string, s: number, e: number) => `https://player.cinezo.live/embed/tv/${id}/${s}/${e}?autoplay=false&poster=true&chromecast=true&servericon=true&setting=true&pip=true&font=Roboto&fontcolor=6f63ff&fontsize=20&opacity=0.5&primarycolor=e8b86d&secondarycolor=0a0a12&iconcolor=ffffff`,
-        useSandbox: false
-    },
-    {
-        name: "Vidlink",
-        movie: (id: string) => `https://vidlink.pro/movie/${id}`,
-        show: (id: string, s: number, e: number) => `https://vidlink.pro/tv/${id}/${s}/${e}`,
+        show: (id: string, s: number, e: number) => `https://autoembed.co/tv/tmdb/${id}-${s}-${e}`,
         useSandbox: false
     },
     {
