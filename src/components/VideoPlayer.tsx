@@ -32,6 +32,12 @@ const SERVERS = [
         useSandbox: false
     },
     {
+        name: "VidZee",
+        movie: (id: string) => `https://player.vidzee.wtf/embed/movie/${id}`,
+        show: (id: string, s: number, e: number) => `https://player.vidzee.wtf/embed/tv/${id}/${s}/${e}`,
+        useSandbox: false
+    },
+    {
         name: "PrimeSRC",
         movie: (id: string) => `https://primesrc.me/embed/movie?tmdb=${id}`,
         show: (id: string, s: number, e: number) => `https://primesrc.me/embed/tv?tmdb=${id}&season=${s}&episode=${e}`,
@@ -55,7 +61,6 @@ const SERVERS = [
         show: (id: string, s: number, e: number) => `https://vidfast.net/tv/${id}/${s}/${e}`,
         useSandbox: false
     },
-
     {
         name: "VidSrc PM",
         movie: (id: string) => `https://vidsrc.pm/embed/movie/${id}`,
