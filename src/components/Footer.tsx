@@ -30,7 +30,7 @@ const Footer = () => {
                 {/* Right: Credits */}
                 <div className="flex items-center gap-2 text-xs">
                     <span>
-                        &copy; {new Date().getFullYear()} <span className="hidden sm:inline">•</span> Made by <span className="text-gray-300 font-medium">Mr Xeon</span>
+                        Made by <span className="text-gray-300 font-medium">Mr Xeon</span>
                     </span>
                     <a
                         href="https://t.me/MrXeontg"
