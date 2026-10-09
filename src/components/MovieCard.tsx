@@ -111,10 +111,10 @@ const MovieCard = ({ movie, className, isFluid = false, isResume = false, onRemo
         ? (movie.profile_path ? `${TMDB_CONFIG.posterSizes.medium}${movie.profile_path}` : null)
         : isCompany
             ? (movie.logo_path ? `${TMDB_CONFIG.posterSizes.medium}${movie.logo_path}` : null)
-            : movie.backdrop_path
-                ? `${TMDB_CONFIG.backdropSizes.medium}${movie.backdrop_path}`
-                : movie.poster_path
-                    ? `${TMDB_CONFIG.posterSizes.medium}${movie.poster_path}`
+            : movie.poster_path
+                ? `${TMDB_CONFIG.posterSizes.medium}${movie.poster_path}`
+                : movie.backdrop_path
+                    ? `${TMDB_CONFIG.backdropSizes.medium}${movie.backdrop_path}`
                     : null;
 
     const watchUrl = `/watch/${movie.media_type || 'movie'}/${movie.id}${movie.season ? `?s=${movie.season}&e=${movie.episode || 1}` : ''}`;
@@ -227,9 +227,9 @@ const MovieCard = ({ movie, className, isFluid = false, isResume = false, onRemo
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             whileHover={{
-                scale: 1.25,
+                scale: 1.15,
                 zIndex: 100,
-                y: -15,
+                y: -10,
                 transition: { type: "spring", stiffness: 400, damping: 25 }
             }}
             style={{ 
@@ -238,7 +238,7 @@ const MovieCard = ({ movie, className, isFluid = false, isResume = false, onRemo
             }}
             className={cn(
                 "relative group cursor-pointer transition-all duration-300",
-                isFluid ? "w-full" : "flex-none w-[190px] sm:w-[230px] md:w-[270px] lg:w-[310px] xl:w-[330px]",
+                isFluid ? "w-full" : "flex-none w-[120px] sm:w-[140px] md:w-[160px] lg:w-[180px] xl:w-[200px]",
                 className
             )}
             onClick={handleCardClick}
@@ -246,7 +246,7 @@ const MovieCard = ({ movie, className, isFluid = false, isResume = false, onRemo
             onMouseLeave={() => setIsHovered(false)}
         >
             <div className={cn(
-                "relative aspect-video w-full overflow-hidden bg-white/5 border border-white/10 group-hover:border-white/30 transition-all duration-300",
+                "relative aspect-[2/3] w-full overflow-hidden bg-white/5 border border-white/10 group-hover:border-white/30 transition-all duration-300",
                 isHovered ? "rounded-t-xl border-b-0 shadow-[0_20px_50px_rgba(0,0,0,0.8)]" : "rounded-xl"
             )}>
                 {/* Navigation Loader Overlay */}
@@ -294,6 +294,15 @@ const MovieCard = ({ movie, className, isFluid = false, isResume = false, onRemo
                     </div>
                 )}
 
+                {/* Play circle overlay on hover / touch */}
+                {!isPerson && !isCompany && (
+                    <div className="absolute inset-0 z-10 flex items-center justify-center opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-200 pointer-events-none">
+                        <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-accent/90 flex items-center justify-center shadow-xl shadow-accent/40 border-2 border-white/20">
+                            <Play className="h-5 w-5 sm:h-6 sm:w-6 text-white fill-white ml-0.5" />
+                        </div>
+                    </div>
+                )}
+
                 {/* Silent YouTube Hover Trailer Preview Overlay */}
                 {trailerUrl && (
                     <div className="absolute inset-0 w-full h-full z-10 overflow-hidden bg-black transition-all duration-500 pointer-events-auto">
@@ -316,11 +325,20 @@ const MovieCard = ({ movie, className, isFluid = false, isResume = false, onRemo
                     </div>
                 )}
 
-                {/* Default Bottom info for non-hover (mobile/tablet) */}
-                <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black via-black/80 to-transparent group-hover:opacity-0 transition-all duration-300">
-                    <h3 className="text-xs md:text-sm font-bold text-white truncate drop-shadow-lg">
+                {/* Default Bottom info for non-hover (mobile/tablet) - matches Cucuflix portrait style */}
+                <div className="absolute bottom-0 left-0 right-0 p-2.5 bg-gradient-to-t from-black via-black/80 to-transparent group-hover:opacity-0 transition-all duration-300">
+                    <h3 className="text-[11px] sm:text-xs font-bold text-white truncate drop-shadow-lg leading-tight">
                         {movie.title || movie.name}
                     </h3>
+                    {!isPerson && !isCompany && (
+                        <div className="flex items-center gap-1.5 mt-0.5 text-[10px] text-gray-300">
+                            <span>
+                                {movie.release_date?.split("-")?.[0] || movie.first_air_date?.split("-")?.[0] || ""}
+                            </span>
+                            <span className="opacity-60">•</span>
+                            <span>{movie.media_type === "tv" ? "Series" : "Movie"}</span>
+                        </div>
+                    )}
                 </div>
             </div>
 
