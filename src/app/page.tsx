@@ -42,7 +42,7 @@ export default async function Home() {
 
   return (
     <main className="min-h-screen pb-20 overflow-x-hidden">
-      <h1 className="sr-only">Xeonflix | Watch Movies & TV Shows Online Free</h1>
+      <h1 className="sr-only">Meowly | Watch Movies & TV Shows Online Free</h1>
 
       {heroMovies && heroMovies.length > 0 && <Hero movies={heroMovies as any} />}
 
@@ -57,15 +57,28 @@ export default async function Home() {
         <InfiniteGenres />
       </div>
 
-      {/* New Footer Section based on Screenshot */}
-      <footer className="mt-20 md:mt-32 border-t border-white/5 pt-16 pb-10 px-4 text-center">
-        <p className="text-white text-lg font-semibold mb-3">
-          © 2026 XeonFlix. All Rights Reserved.
-        </p>
-        <p className="text-gray-400 text-sm md:text-base max-w-4xl mx-auto leading-relaxed">
-          Xeonflix does not host, upload, or store any files. Titles shown here are indexed automatically from public sources and third-party services. The media stays on those platforms — we only provide links.
-        </p>
-      </footer>
+      {/* SEO Content & Footer Section */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20 md:mt-32 space-y-16 border-t border-white/5 pt-16">
+        
+        {/* The Square Box with the requested text */}
+        <div className="max-w-3xl mx-auto bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 md:p-12 text-center space-y-6">
+          <h2 className="text-2xl md:text-3xl font-bold text-white">Join Millions of Movie Lovers</h2>
+          <p className="text-gray-400 leading-relaxed text-lg">
+            Start your cinematic journey with Xeonflix today. Discover new favorites, build your watchlist, and enjoy a premium streaming experience that respects your time and your privacy.
+          </p>
+        </div>
+
+        {/* New Footer based on Screenshot */}
+        <footer className="mt-16 border-t border-white/5 pt-16 pb-10 px-4 text-center">
+          <p className="text-white text-lg font-semibold mb-3">
+            © 2026 XeonFlix. All Rights Reserved.
+          </p>
+          <p className="text-gray-400 text-sm md:text-base max-w-4xl mx-auto leading-relaxed">
+            Xeonflix does not host, upload, or store any files. Titles shown here are indexed automatically from public sources and third-party services. The media stays on those platforms — we only provide links.
+          </p>
+        </footer>
+
+      </div>
     </main>
   );
 }
