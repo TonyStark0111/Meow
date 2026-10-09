@@ -22,11 +22,6 @@ const Footer = () => {
                     </nav>
                 </div>
 
-                {/* Middle: Disclaimer (Hidden on very small screens or abbreviated) */}
-                <p className="text-xs text-gray-600 max-w-md hidden md:block text-center mx-auto leading-tight">
-                    Meowly does not host any content on our servers.
-                </p>
-
                 {/* Right: Credits */}
                 <div className="flex items-center gap-2 text-xs">
                     <span>
@@ -42,6 +37,14 @@ const Footer = () => {
                         <Github className="w-4 h-4 ml-1" />
                     </a>
                 </div>
+            </div>
+
+            {/* Bottom: Copyright & Disclaimer (Referencing Screenshot) */}
+            <div className="container mx-auto px-4 mt-8 pt-6 border-t border-gray-800">
+                <p className="text-gray-400 mb-2">&copy; 2026 XeonFlix. All Rights Reserved.</p>
+                <p className="text-xs text-gray-500 max-w-2xl mx-auto leading-relaxed">
+                    Xeonflix does not host, upload, or store any files. Titles shown here are indexed automatically from public sources and third-party services. The media stays on those platforms — we only provide links.
+                </p>
             </div>
         </footer>
     );
