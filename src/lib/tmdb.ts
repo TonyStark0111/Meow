@@ -139,11 +139,12 @@ export const tmdb = {
         const data = await fetchTMDB(`/genre/${type}/list`);
         return data?.genres || [];
     },
-    getDiscover: async (type: "movie" | "tv", options: { genreId?: string, year?: string, sortBy?: string } = {}): Promise<Movie[]> => {
+    getDiscover: async (type: "movie" | "tv", options: { genreId?: string, year?: string, sortBy?: string, page?: number } = {}): Promise<Movie[]> => {
         const params: Record<string, string> = {
             sort_by: options.sortBy || "popularity.desc",
             include_adult: "false",
-            "vote_count.gte": "100"
+            "vote_count.gte": "100",
+            page: (options.page || 1).toString()
         };
         if (options.genreId) params.with_genres = options.genreId;
         if (options.year) {
@@ -153,6 +154,24 @@ export const tmdb = {
 
         const data = await fetchTMDB(`/discover/${type}`, params);
         return (data?.results || []).map((item: any) => ({ ...item, media_type: type }));
+    },
+    getDiscoverPages: async (type: "movie" | "tv", options: { genreId?: string, year?: string, sortBy?: string } = {}, pages: number = 3): Promise<Movie[]> => {
+        const results: Movie[] = [];
+        const promises = [];
+        for (let p = 1; p <= pages; p++) {
+            promises.push(tmdb.getDiscover(type, { ...options, page: p }));
+        }
+        const pagesData = await Promise.all(promises);
+        for (const pageResults of pagesData) {
+            results.push(...pageResults);
+        }
+        // Deduplicate by id
+        const seen = new Set<number>();
+        return results.filter((m) => {
+            if (seen.has(m.id)) return false;
+            seen.add(m.id);
+            return true;
+        });
     },
     getSeasonDetails: async (tvId: string, seasonNumber: number) => {
         const data = await fetchTMDB(`/tv/${tvId}/season/${seasonNumber}`);
