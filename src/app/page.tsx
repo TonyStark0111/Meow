@@ -42,7 +42,7 @@ export default async function Home() {
 
   return (
     <main className="min-h-screen pb-20 overflow-x-hidden">
-      <h1 className="sr-only">Meowly | Watch Movies & TV Shows Online Free</h1>
+      <h1 className="sr-only">Xeonflix | Watch Movies & TV Shows Online Free</h1>
 
       {heroMovies && heroMovies.length > 0 && <Hero movies={heroMovies as any} />}
 
