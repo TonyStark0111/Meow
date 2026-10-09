@@ -11,7 +11,7 @@ const Footer = () => {
                 {/* Left: Brand & Links */}
                 <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
                     <span className="font-bold tracking-tighter text-prime-blue uppercase">
-                        Meow<span className="text-white">ly</span>
+                        Xeon<span className="text-white">Flix</span>
                     </span>
                     <nav className="flex gap-4">
                         <Link href="/" className="hover:text-white transition-colors">Home</Link>
@@ -30,10 +30,10 @@ const Footer = () => {
                 {/* Right: Credits */}
                 <div className="flex items-center gap-2 text-xs">
                     <span>
-                        &copy; {new Date().getFullYear()} <span className="hidden sm:inline">•</span> Made by <span className="text-gray-300 font-medium">Utkarsh Gupta</span>
+                        &copy; {new Date().getFullYear()} <span className="hidden sm:inline">•</span> Made by <span className="text-gray-300 font-medium">Mr Xeon</span>
                     </span>
                     <a
-                        href="https://github.com/utkarshgupta188/meowly"
+                        href="https://t.me/MrXeontg"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="hover:text-white transition-colors"
